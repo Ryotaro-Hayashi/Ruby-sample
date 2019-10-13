@@ -2,13 +2,21 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <!-- クロスサイトリクエストフォージェリ対策 -->
     <%= csrf_meta_tags %>
+    <!-- 自動で読み込まれるスタイルシートに加えて、自分でスタイルシートを指定して読み込む -->
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <!-- 個別レイアウトを表示 -->
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
