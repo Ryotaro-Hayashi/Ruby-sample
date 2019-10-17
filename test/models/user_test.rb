@@ -3,11 +3,14 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
+  # setupメソッドに、テスト実行前に毎回実行してほしい処理を記述
   def setup
     @user = User.new(name: "Example User", email: "user@example.com")
   end
 
+  # testメソッドは引数に文字列とブロックを受け付ける
   test "should be valid" do
+    # assert メソッドは、第1引数がtrue である場合に、テストが成功したものとみなす
     assert @user.valid?
   end
 
