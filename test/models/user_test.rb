@@ -1,3 +1,4 @@
+# テストで使うデフォルト設定としてtest_helper.rbが読み込まれる
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
