@@ -12,6 +12,7 @@ default: &default
 development:
   # エイリアスで別名を付けたブロックを * で参照し、挿入
   <<: *default
+  database: db/development.sqlite3
 
 # テスト環境の設定
 test:
