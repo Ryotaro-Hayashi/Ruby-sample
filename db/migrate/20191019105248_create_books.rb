@@ -2,8 +2,9 @@
 # rails db:migrate でマイグレーションを実行
 class CreateBooks < ActiveRecord::Migration[5.1]
   def change
-    # create_tableメソッドでテーブルを新規に作成
+    # create_tableメソッドでbooksというテーブルを新規に作成
     create_table :books do |t|
+      # それぞれの型を持つカラムを備える（ex string型のカラムisbn）
       t.string :isbn
       t.string :title
       t.integer :price
