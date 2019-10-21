@@ -59,4 +59,16 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not duplicate_user.valid?
   end
+
+  # スペース6個のとき検証に失敗すれば成功するテスト
+  test "password should be present (nonblank)" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+
+  # 5文字で検証に失敗すれば成功するテスト
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
+  end
 end
