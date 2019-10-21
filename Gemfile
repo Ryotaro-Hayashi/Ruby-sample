@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.1.6'
-gem 'bootstrap-sass', '3.4.1'
+# has_secure_passwordを使ってパスワードをハッシュ化するために必要なハッシュ関数
+gem 'bcrypt',         '3.1.12'
+gem 'bootstrap-sass', '3.3.7'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'

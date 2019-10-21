@@ -1,3 +1,5 @@
+# 統合テストは、複数のコントローラーにまたがって、ユーザーの実際の操作を追跡するような用途で利用する。
+# 統合テストは、コマンドで生成する必要がある。
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest

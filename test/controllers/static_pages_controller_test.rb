@@ -2,8 +2,12 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
+    # コントローラーを起動するためにgetメソッドで疑似的にHTTPリクエ
     get root_path
+    # コントローラーを起動するためにgetメソッドで疑似的にHTTPリクエストを生成
     assert_response :success
+    # CSSのセレクター式を指定して、第2引数と比較
+    # タイトル要素が Ruby on Rails Tutorial Sample App であることをテスト
     assert_select "title", "Ruby on Rails Tutorial Sample App"
   end
 

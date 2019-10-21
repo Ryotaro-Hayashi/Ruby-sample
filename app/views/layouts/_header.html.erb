@@ -1,5 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+    <!-- link_to(リンクテキスト, url)   第3引数でCSSのidやclassを設定することもある-->
+    <!-- routes.rb でURLの設定をしたことで、名前付きルートを使えるようになる。
+         ex) about_path -> '/about'   about_url -> 'http://localhost:3000/about' -->
     <%= link_to "sample app", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
