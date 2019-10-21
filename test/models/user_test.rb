@@ -5,7 +5,8 @@ class UserTest < ActiveSupport::TestCase
 
   # setupメソッドに、テスト実行前に毎回実行してほしい処理を記述
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com")
+    @user = User.new(name: "Example User", email: "user@example.com",
+                     password: "foobar", password_confirmation: "foobar")
   end
 
   # testメソッドは引数に文字列とブロックを受け付ける
