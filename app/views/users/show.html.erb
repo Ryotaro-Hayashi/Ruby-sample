@@ -1,1 +1,7 @@
 <%= @user.name %>, <%= @user.email %>
+<h1>
+  <!-- ユーザー表示ビューに名前とGravatarを表示する -->
+  <!-- gravetar_for はヘルパーメソッド -->
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
