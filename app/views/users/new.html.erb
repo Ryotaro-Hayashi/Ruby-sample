@@ -4,8 +4,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <!-- form_forヘルパーメソッドで、Active Recordのオブジェクトを取り込み、そのオブジェクトの属性を使ってフォームを構築 -->
+    <!-- f はフォームのインスタンスで、HTMLフォーム要素に対応するメソッドが呼び出されると、@userの属性を設定するために特別に設計されたHTMLを返す。 -->
     <%= form_for(@user) do |f| %>
+      <!-- フォームの構成部品と、その項目名（ラベル）を明確に関連付けるための要素-->
       <%= f.label :name %>
+      <!-- 一行テキストを入力するためのフォーム -->
       <%= f.text_field :name %>
 
       <%= f.label :email %>
@@ -21,3 +24,6 @@
     <% end %>
   </div>
 </div>
+
+<!-- 生成されるHTMLのinput要素のname属性 -->
+<!-- form要素 -->
