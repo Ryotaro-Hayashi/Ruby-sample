@@ -14,11 +14,19 @@ class UsersController < ApplicationController
   # RESTful URI に応答するので、/usersへのPOSTリクエストはcreateアクションに送られる。
   def create
     # paramsでフォーム送信を受け取り、User.newを使って新しいユーザーオブジェクトを作成
-    @user = User.new(params[:user]) # 実装は終わっていないことに注意!
+    # paramsハッシュ全体を初期化するという行為はセキュリティ上、極めて危険だから
+    @user = User.new(user_params)
     if @user.save
       # 保存の成功をここで扱う。
     else
       render 'new'
     end
   end
+  # privateキーワードで、外部から使えないようにする。
+  private
+    # :user属性を必須とし、名前、メールアドレス、パスワード、パスワードの確認の属性をそれぞれ許可し、それ以外を許可しない
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 end
