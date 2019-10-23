@@ -1,7 +1,10 @@
-<%# フォーム送信時にエラーメッセージを表示するためのパーシャル %>
+<!-- エラーメッセージを表示するためのパーシャル -->
+<!-- .any? は.empty?の反対 -->
 <% if @user.errors.any? %>
+  <!-- エラーメッセージにスタイルを与えるためid -->
   <div id="error_explanation">
     <div class="alert alert-danger">
+      <!-- pluralizeヘルパーは、最初の引数に整数が与えられると、それに基づいて2番目の引数の英単語を複数形に変更したものを返す。 -->
       The form contains <%= pluralize(@user.errors.count, "error") %>.
     </div>
     <ul>

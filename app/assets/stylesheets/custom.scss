@@ -163,3 +163,19 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+// 無効な内容の送信によって元のページに戻されると、CSSクラスfield_with_errorsを持ったdivタグでエラー箇所を自動的に囲んでくれる。
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
