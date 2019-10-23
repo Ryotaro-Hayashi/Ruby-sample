@@ -17,7 +17,8 @@ class UsersController < ApplicationController
     # paramsハッシュ全体を初期化するという行為はセキュリティ上、極めて危険だから
     @user = User.new(user_params)
     if @user.save
-      # 保存の成功をここで扱う。
+      # 引数URLで指定されたパスにジャンプ
+      redirect_to @user
     else
       render 'new'
     end
