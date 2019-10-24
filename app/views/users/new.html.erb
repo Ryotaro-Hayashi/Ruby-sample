@@ -1,3 +1,33 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <!-- form_forヘルパーメソッドで、Active Recordのオブジェクトを取り込み、そのオブジェクトの属性を使ってフォームを構築 -->
+    <!-- f はフォームのインスタンスで、HTMLフォーム要素に対応するメソッドが呼び出されると、@userの属性を設定するために特別に設計されたHTMLを返す。 -->
+    <%= form_for(@user) do |f| %>
+      <!-- 複数のビューで使われるパーシャルは専用のディレクトリ「shared」によく置かれる。 -->
+      <!-- error_messages はパーシャル -->
+      <%= render 'shared/error_messages' %>
+      <!-- フォームの構成部品と、その項目名（ラベル）を明確に関連付けるための要素-->
+      <%= f.label :name %>
+      <!-- 一行テキストを入力するためのフォーム -->
+      <!-- form-control クラスは、Bootstapによってエラーメッセージをうまく扱ってくれる。 -->
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- 生成されるHTMLのinput要素のname属性 -->
+<!-- form要素 -->

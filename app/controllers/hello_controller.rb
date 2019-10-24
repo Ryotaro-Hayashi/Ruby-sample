@@ -1,5 +1,5 @@
 class HelloController < ApplicationController
-  def index
+  def greet
     # テンプレート変数は、テンプレートファイルに埋め込むべき値のこと
     # Railsでは、インスタンス変数がその役割を担う。
     # アクションとビューでデータを受け渡しする橋渡し
