@@ -17,6 +17,12 @@
     <!-- パーシャルという機能を利用して、ヘッダーをrenderヘルパーでレイアウトに挿入 -->
     <%= render 'layouts/header' %>
     <div class="container">
+      <!-- flash変数の内容をWebサイトのレイアウトに追加 -->
+      <% flash.each do |message_type, message| %>
+        <!-- Bootstrap CSSは、flash変数のクラス用に4つのスタイルを持っている。 (success、info、warning、danger) -->
+        <!-- キーの内容によって異なったCSSクラスを適用させることができ、メッセージの種類によってスタイルを動的に変更させることができる。 -->
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <!-- 個別レイアウトを表示 -->
       <%= yield %>
       <%= render 'layouts/footer' %>

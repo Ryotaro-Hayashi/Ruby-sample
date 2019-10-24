@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # ユーザー登録完了時にフラッシュメッセージを追加
+      # フラッシュメッセージのキーがメッセージタイプになる。
       flash[:success] = "Welcome to the Sample App!"
       # 引数URLで指定されたパスにジャンプ
       redirect_to @user
