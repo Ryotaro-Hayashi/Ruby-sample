@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   # ユーザーをリソースとみなす場合、id=1のユーザーを参照するということは、/users/1というURLに対してGETリクエストを発行するということを意味する。
   # リソースを設定して、/users/1 のURLを有効化し、その他の名前付きルートなどが利用できるようになる。
   resources :users
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 end
