@@ -1,5 +1,7 @@
 # railsでは、クライアントからの要求を受け取ると、ルーティングを利用して呼び出すべきコントローラー/アクションを決定する。
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   # ～/helloというURLが要求されたら、helloコントローラーのindexアクションを呼び出す。
   get '/hello',  to: 'hello#greet'
   get '/list',   to: 'hello#list'
