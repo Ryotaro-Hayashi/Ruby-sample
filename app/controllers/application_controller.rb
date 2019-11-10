@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     render html: "hello, world!"
   end
 
+  # Sessionヘルパーモジュールを読み込む
   include SessionsHelper
 end
 
