@@ -16,4 +16,14 @@ class User < ApplicationRecord
   has_secure_password
   # password が存在し、最低6文字であるという検証ルール
   validates :password, presence: true, length: { minimum: 6 }
+
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    # costは、ハッシュを算出するための計算コストを指定
+    # テスト中は最小にし、本番環境ではしっかりと計算
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    # パスワードを作成（stringはハッシュ化する文字列）
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
