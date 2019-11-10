@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     # paramsハッシュ全体を初期化するという行為はセキュリティ上、極めて危険だから
     @user = User.new(user_params)
     if @user.save
+      # ユーザー登録でログインも同時にする。
+      log_in @user
       # ユーザー登録完了時にフラッシュメッセージを追加
       # フラッシュメッセージのキーがメッセージタイプになる。
       flash[:success] = "Welcome to the Sample App!"

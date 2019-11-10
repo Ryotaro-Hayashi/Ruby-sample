@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     # renderメソッドは、文字列を出力する
     render html: "hello, world!"
   end
+
+  # Sessionヘルパーモジュールを読み込む
+  include SessionsHelper
 end
 
 # 端的に言うと、コントローラーは複数の関連するアクションをまとめたもの
