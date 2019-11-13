@@ -32,4 +32,10 @@ class MicropostTest < ActiveSupport::TestCase
     @micropost.content = "a" * 141
     assert_not @micropost.valid?
   end
+
+  # マイクロポストの順序をテスト
+  test "order should be most recent first" do
+    # 一番最新のものと最初のマイクロポストを比較（降順であれば良い）
+    assert_equal microposts(:most_recent), Micropost.first
+  end
 end
