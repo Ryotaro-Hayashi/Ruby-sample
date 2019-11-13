@@ -1,4 +1,6 @@
+orange:
   content: "I just ate an orange!"
+  # 意図的に順序を変更
   created_at: <%= 10.minutes.ago %>
 
 tau_manifesto:
