@@ -4,8 +4,10 @@ class MicropostTest < ActiveSupport::TestCase
   # fixtures を利用
   def setup
     @user = users(:michael)
-    # マイクロポストの作成
-    @micropost = Micropost.new(content: "Lorem ipsum", user_id: @user.id)
+    # （ユーザーを通した）マイクロポストの作成
+    # buikd は、new と同じでデータベースへの保存は行われない。
+    #  ユーザーを通してマイクロポストを作成しないと、ユーザーidが取得されない。
+    @micropost = @user.microposts.build(content: "Lorem ipsum")
   end
 
   test 'should be valid' do
@@ -15,7 +17,7 @@ class MicropostTest < ActiveSupport::TestCase
   # ユーザーidがないときのマイクロポストのテスト
   test 'user id should be present' do
     # ユーザーidを空にする
-    @user.valid.user_id = nil
+    @micropost.user_id = nil
     assert_not @micropost.valid?
   end
 
