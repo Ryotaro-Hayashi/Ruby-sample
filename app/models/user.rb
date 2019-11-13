@@ -1,7 +1,9 @@
 # 検証ルールを書くモデルクラス
 class User < ApplicationRecord
   # ユーザーがマイクロポストを複数所有する関連付け
-  has_many :microposts
+  # has_manyメソッドにオプションを渡してあげることで、マイクロポストはユーザーと一緒に破棄される。
+  # dependent: :destroyというオプションを使うと、ユーザーが削除されたときに、そのユーザーに紐付いたマイクロポストも一緒に削除されるようになる。
+  has_many :microposts, dependent: :destroy
   before_save { self.email = email.downcase }
   # validatesメソッドを使って検証ルールを宣言
   # validates 検証対象のフィールド名, 検証名: 検証パラメーター
