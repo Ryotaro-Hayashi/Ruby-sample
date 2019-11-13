@@ -1,5 +1,7 @@
 # 検証ルールを書くモデルクラス
 class User < ApplicationRecord
+  # ユーザーがマイクロポストを複数所有する関連付け
+  has_many :microposts
   before_save { self.email = email.downcase }
   # validatesメソッドを使って検証ルールを宣言
   # validates 検証対象のフィールド名, 検証名: 検証パラメーター
