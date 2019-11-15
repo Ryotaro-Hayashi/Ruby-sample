@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     # update_attributesメソッドは属性のハッシュを受け取り、成功時には更新と保存を続けて同時に行う。
     if @user.update_attributes(user_params)
       # 更新に成功した場合を扱う。
+      render 'new'
     else
       render 'edit'
     end
