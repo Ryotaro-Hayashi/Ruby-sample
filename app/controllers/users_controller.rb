@@ -33,11 +33,20 @@ class UsersController < ApplicationController
     # params でユーザーidを取ってくる。
     @user = User.find(params[:id])
   end
+
+  def update
+    @user = User.find(params[:id])
+    # update_attributesメソッドは属性のハッシュを受け取り、成功時には更新と保存を続けて同時に行う。
+    if @user.update_attributes(user_params)
+      # 更新に成功した場合を扱う。
+    else
+      render 'edit'
+    end
+  end
   # privateキーワードで、外部から使えないようにする。
   private
     # :user属性を必須とし、名前、メールアドレス、パスワード、パスワードの確認の属性をそれぞれ許可し、それ以外を許可しない
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
