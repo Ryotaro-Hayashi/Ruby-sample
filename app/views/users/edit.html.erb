@@ -3,6 +3,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <%# form_for(@user)を使ってフォームを構成すると、@user.new_record?がtrueのときにはPOSTを、falseのときにはPATCHを使用 %>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
@@ -23,6 +24,7 @@
 
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
+      <!-- target="_blank" で別タブでリンク先を開く -->
       <a href="http://gravatar.com/emails" target="_blank">change</a>
     </div>
   </div>
