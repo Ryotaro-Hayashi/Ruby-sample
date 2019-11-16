@@ -6,6 +6,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
+    # log_in_asヘルパーを利用
     log_in_as(@user)
     # edit_user_path にgetリクエストを送って、編集ページへ
     get edit_user_path(@user)
