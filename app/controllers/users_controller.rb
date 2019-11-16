@@ -72,6 +72,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       # ログイン中のユーザーと同じでなければ、rootをレンダリング
       # current_user?メソッドを使用
-      redirect_to(root_url) current_user?
+      redirect_to(root_url) unless current_user?(@user)
     end
 end
