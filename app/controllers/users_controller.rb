@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  # before_actionメソッドを使って何らかの処理が実行される直前に特定のメソッドを実行
+  # beforeフィルターはコントローラ内のすべてのアクションに適用されるので、onlyオプションによって制限
+  # ユーザー情報を更新する前に、ユーザーがログインしているかを確認し、していなければログインページをレンダリング
+  before_action :logged_in_user, only: [:edit, :update]
+  # ユーザー情報を更新する前に、ユーザーが正しいかを確認し、正しくなければrootをレンダリング
+  before_action :correct_user,   only: [:edit, :update]
+
   # RailsのREST機能が有効になっていると、GETリクエストは自動的にshowアクションとして扱わ
   def show
     # params[:id]の部分は、たとえばユーザーidの1に置き換わる。
@@ -45,10 +52,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # before_actionメソッドを使って何らかの処理が実行される直前に特定のメソッドを実行
-  # beforeフィルターはコントローラ内のすべてのアクションに適用されるので、onlyオプションによって制限
-  before_action :logged_in_user, only: [:edit, :update]
-
   # privateキーワードで、外部から使えないようにする。
   private
     # :user属性を必須とし、名前、メールアドレス、パスワード、パスワードの確認の属性をそれぞれ許可し、それ以外を許可しない
@@ -62,5 +65,12 @@ class UsersController < ApplicationController
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
+    end
+
+    # 正しいユーザーかどうか確認
+    def correct_user
+      @user = User.find(params[:id])
+      # ログイン中のユーザーと同じでなければ、rootをレンダリング
+      redirect_to(root_url) unless @user == current_user
     end
 end
