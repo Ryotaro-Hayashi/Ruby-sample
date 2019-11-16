@@ -59,9 +59,13 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
+    # beforeアクション
+
     # ログイン済みユーザーかどうか確認
     def logged_in_user
       unless logged_in?
+        # 開こうとしていたURLを store_location メソッドで記録
+        store_location
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
