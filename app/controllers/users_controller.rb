@@ -38,8 +38,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # update_attributesメソッドは属性のハッシュを受け取り、成功時には更新と保存を続けて同時に行う。
     if @user.update_attributes(user_params)
-      # 更新に成功した場合を扱う。
-      render 'new'
+      flash[:success] = "Profile updated"
+      redirect_to user_path(@user)
     else
       render 'edit'
     end

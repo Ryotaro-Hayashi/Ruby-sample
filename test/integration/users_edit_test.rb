@@ -20,6 +20,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   tet 'successful edit' do
     get edit_user_path(@user)
     assert_template 'users/edit'
+    # ユーザー情報の更新には、パスワードを求めない。
     patch user_path(@user), params: { user: { name:  name,
                                               email: email,
                                               password:              "",
