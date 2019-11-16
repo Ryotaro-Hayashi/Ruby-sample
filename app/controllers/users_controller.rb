@@ -44,6 +44,11 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+  # before_actionメソッドを使って何らかの処理が実行される直前に特定のメソッドを実行
+  # beforeフィルターはコントローラ内のすべてのアクションに適用されるので、onlyオプションによって制限
+  before_action :logged_in_user, only: [:edit, :update]
+
   # privateキーワードで、外部から使えないようにする。
   private
     # :user属性を必須とし、名前、メールアドレス、パスワード、パスワードの確認の属性をそれぞれ許可し、それ以外を許可しない
