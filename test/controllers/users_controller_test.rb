@@ -68,4 +68,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal email, @user.email
   end
 
+  # ログインしていないときにindexを開こうとするときのテスト
+  test 'should redirect index when not logged in' do
+    get users_path
+    # ログインページに飛ばされる。
+    assert_redirected_to login_url
+  end
+
 end

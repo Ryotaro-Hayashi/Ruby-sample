@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
       log_in user
       # フレンドリーフォーワーディングで記録していたURLがあれば、そこを開き、なければユーザーページを開く。
-      redirect_back_or user
+      redirect_back_or user_path(user)
     else
       # エラーメッセージを作成する
       flash.now[:danger] = 'Invalid email/password combination'
