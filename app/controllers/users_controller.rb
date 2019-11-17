@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def index
     # User.allを使ってデータベース上の全ユーザーを取得
     # ビューで使えるインスタンス変数@usersに代入
-    @user = User.all
+    @users = User.all
   end
 
   # privateキーワードで、外部から使えないようにする。
