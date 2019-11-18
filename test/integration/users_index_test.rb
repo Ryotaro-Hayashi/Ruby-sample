@@ -1,18 +1,14 @@
 require 'test_helper'
 
 class UsersIndexTest < ActionDispatch::IntegrationTest
-  def setup
-    @user = users(:michael)
-  end
-
-  def setup
+    def setup
     @admin     = users(:michael)
     @non_admin = users(:archer)
   end
 
   # indexページでユーザーが表示されていて、ページネーション機能が実装されていることのテスト
   test "index including pagination" do
-    log_in_as(@user)
+    log_in_as(@admin)
     get users_path
     assert_template 'users/index'
     # divタグにpaginationクラスがあるかをテスト（ページネーションのリンクがある。）
