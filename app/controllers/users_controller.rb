@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # ユーザー情報を更新する前に、ユーザーが正しいかを確認し、正しくなければrootをレンダリング
   before_action :correct_user,   only: [:edit, :update]
+  # 管理者のみにdestroyアクションを実行可能にする。
+  before_action :admin_user,     only: :destroy
 
   # RailsのREST機能が有効になっていると、GETリクエストは自動的にshowアクションとして扱わ
   def show
@@ -93,5 +95,10 @@ class UsersController < ApplicationController
       # ログイン中のユーザーと同じでなければ、rootをレンダリング
       # current_user?メソッドを使用
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    # 管理者かどうか確認
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
