@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # before_actionメソッドを使って何らかの処理が実行される直前に特定のメソッドを実行
   # beforeフィルターはコントローラ内のすべてのアクションに適用されるので、onlyオプションによって制限
   # ユーザー情報を更新する前に、ユーザーがログインしているかを確認し、していなければログインページをレンダリング
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # ユーザー情報を更新する前に、ユーザーが正しいかを確認し、正しくなければrootをレンダリング
   before_action :correct_user,   only: [:edit, :update]
 
@@ -60,6 +60,12 @@ class UsersController < ApplicationController
     # User.paginateは、:pageパラメーターに基いて、データベースからひとかたまりのデータ (デフォルトでは30) を取り出す。
     # params[:page]は、will_paginateによって自動的に生成される。
     @users = User.paginate(page: params[:page])
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   # privateキーワードで、外部から使えないようにする。
