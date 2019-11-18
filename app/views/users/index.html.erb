@@ -1,6 +1,9 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<!-- will_paginateメソッドで、ページネーション機能を実装 -->
+<%= will_paginate %>
+
 <ul class="users">
   <!-- 1人1人のユーザーに対してリストで表現 -->
   <% @users.each do |user| %>
@@ -10,3 +13,6 @@
     </li>
   <% end %>
 </ul>
+
+<!-- 下にもページネーションを追加 -->
+<%= will_paginate %>

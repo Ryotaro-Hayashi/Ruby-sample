@@ -55,7 +55,11 @@ class UsersController < ApplicationController
   def index
     # User.allを使ってデータベース上の全ユーザーを取得
     # ビューで使えるインスタンス変数@usersに代入
-    @users = User.all
+    # @users = User.all
+
+    # User.paginateは、:pageパラメーターに基いて、データベースからひとかたまりのデータ (デフォルトでは30) を取り出す。
+    # params[:page]は、will_paginateによって自動的に生成される。
+    @users = User.paginate(page: params[:page])
   end
 
   # privateキーワードで、外部から使えないようにする。
