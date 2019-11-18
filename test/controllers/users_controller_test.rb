@@ -75,4 +75,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  # ログインしていないユーザーがdestroyアクションを実行しようとするときのテスト
+  test "should redirect destroy when not logged in" do
+    # deleteリクエストを送ってもユーザー数が変わらない。
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    # ログインページにリダイレクトされる。
+    assert_redirected_to login_url
+  end
+
+  # ログインユーザーでも権限がないときのテスト
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to root_url
+  end
 end
