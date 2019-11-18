@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def show
     # params[:id]の部分は、たとえばユーザーidの1に置き換わる。
     @user = User.find(params[:id])
+    # @micropostsインスタンス変数をshowアクションに追加して、ページネーション機能を実装
+    @microposts = @user.microposts.paginate(page: params[:page])
     # デバッガーメソッドを追加すると、デバッグが簡単に行える。
     # debugger
   end
