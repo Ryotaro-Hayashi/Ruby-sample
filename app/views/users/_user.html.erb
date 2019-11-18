@@ -1,4 +1,9 @@
 <li>
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user_path(user) %>
+  <!-- 管理者権限があり、かつ、ログインしているユーザーが一致しているとき、ユーザー削除用のリンクを表示 -->
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
 </li>
