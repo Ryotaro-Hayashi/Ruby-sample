@@ -1,5 +1,5 @@
 class Micropost < ApplicationRecord
-  # コマンドでマイクロポストモデルを作るのオプションで
+  # コマンドでマイクロポストモデルを作るオプションで
   # user:references と指定したので自動生成で、
   # micropostモデルをユーザーモデルと結び付けてくれる。
   # belongs_to は１対１の関係であることを表す。

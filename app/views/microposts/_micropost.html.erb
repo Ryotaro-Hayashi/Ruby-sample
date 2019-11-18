@@ -1,0 +1,12 @@
+<li id="micropost-<%= micropost.id %>">
+  <!-- 画像をクリックしたらユーザープロフィールを表示 -->
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <!-- 名前をクリックしたらユーザープロフィールを表示 -->
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <!-- マイクロポストのコンテンツを表示 -->
+  <span class="content"><%= micropost.content %></span>
+  <span class="timestamp">
+    <!-- いつ投稿されたかを表示 -->
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  </span>
+</li>
