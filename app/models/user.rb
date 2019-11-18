@@ -19,7 +19,9 @@ class User < ApplicationRecord
   # has_secure_passwordには、仮想的なpassword属性とpassword_confirmation属性に対してバリデーションをする機能も(強制的に)追加されている
   has_secure_password
   # password が存在し、最低6文字であるという検証ルール
-  validates :password, presence: true, length: { minimum: 6 }
+  # ユーザー情報の更新の際にpasswordが空になることを許す。
+  # ユーザー情報を作成する際には、has_secure_password によっては存在性を検証されているので問題ない。
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
