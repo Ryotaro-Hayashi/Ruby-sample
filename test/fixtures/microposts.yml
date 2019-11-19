@@ -2,6 +2,8 @@ orange:
   content: "I just ate an orange!"
   # 意図的に順序を変更
   created_at: <%= 10.minutes.ago %>
+  # ユーザーカラムを追加
+  user: michael
 
 tau_manifesto:
   content: "Check out the @tauday site by @mhartl: http://tauday.com"
