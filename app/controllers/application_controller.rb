@@ -10,6 +10,17 @@ class ApplicationController < ActionController::Base
 
   # Sessionヘルパーモジュールを読み込む
   include SessionsHelper
+
+  # usersコントローラーとmicropostsコントローラーで使用
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      # 開こうとしていたURLを store_location メソッドで記録
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
 end
 
 # 端的に言うと、コントローラーは複数の関連するアクションをまとめたもの

@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def show
     # params[:id]の部分は、たとえばユーザーidの1に置き換わる。
     @user = User.find(params[:id])
+    # @micropostsインスタンス変数をshowアクションに追加して、ページネーション機能を実装
+    @microposts = @user.microposts.paginate(page: params[:page])
     # デバッガーメソッドを追加すると、デバッグが簡単に行える。
     # debugger
   end
@@ -78,17 +80,7 @@ class UsersController < ApplicationController
     end
 
     # beforeアクション
-
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        # 開こうとしていたURLを store_location メソッドで記録
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
+    
     # 正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
