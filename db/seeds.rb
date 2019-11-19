@@ -4,6 +4,7 @@ User.create!(name:  "Example User",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
+=begin
 
 # サンプルユーザーを99個作成
 99.times do |n|
@@ -24,3 +25,5 @@ users = User.order(:created_at).take(6)
   # 各ユーザーにマイクロポストを作成
   users.each { |user| user.microposts.create!(content: content) }
 end
+
+=end
