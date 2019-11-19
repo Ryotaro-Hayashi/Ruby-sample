@@ -8,7 +8,7 @@
       <%= form_for(@user) do |f| %>
       <!-- 複数のビューで使われるパーシャルは専用のディレクトリ「shared」によく置かれる。 -->
       <!-- error_messages はパーシャル -->
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
       <!-- フォームの構成部品と、その項目名（ラベル）を明確に関連付けるための要素-->
       <%= f.label :name %>
       <!-- 一行テキストを入力するためのフォーム -->

@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
+    # ログインしているときに、ログインしているユーザーでマイクロポストを作成
+    @micropost = current_user.microposts.build if logged_in?
   end
 
   def help
